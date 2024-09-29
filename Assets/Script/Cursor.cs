@@ -45,7 +45,7 @@ public class Cursor : MonoBehaviour
         // when player holds mouse button to aim, this is where they first click
         if (Input.GetMouseButtonDown(0)) { firstClicked = cursorPos; isHolding = true; }
 
-	if (isHolding) stretchTo(cursorPos);
+	    if (isHolding) stretchTo(cursorPos);
     }
 
     // draw a line on the launcher representing the vector between firstClicked and the given position
@@ -55,7 +55,7 @@ public class Cursor : MonoBehaviour
         direction = (firstClicked - pos).normalized; // the direction the object will be launched in
 
         lineRenderer.SetPosition(0, lineRenderer.gameObject.transform.position);
-        lineRenderer.SetPosition(1, (Vector2)lineRenderer.gameObject.transform.position + (direction * force * -1));
+        lineRenderer.SetPosition(1, (Vector2)lineRenderer.gameObject.transform.position + (direction * force * 1));
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -79,7 +79,7 @@ public class Cursor : MonoBehaviour
         currentObject = nextObject;
         nextObject = objects[Random.Range(0, objects.Count)];
 
-	// scale into a random shape, 0.5 minimum
-	nextObject.transform.localScale = new Vector2(0.5f + Random.value * blockScale, 0.5f + Random.value* blockScale);
+	    // scale into a random shape, 0.5 minimum
+	    nextObject.transform.localScale = new Vector2(0.5f + Random.value * blockScale, 0.5f + Random.value* blockScale);
     }
 }
